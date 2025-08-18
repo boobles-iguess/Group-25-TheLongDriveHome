@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections; 
 using System.Collections.Generic;
 using System.IO;
 
@@ -12,7 +13,7 @@ public class MazeBuilder : MonoBehaviour
     public GameObject floorPrefab;
     public GameObject stairPrefab;
     public GameObject trapDoorPrefab;
-    public Transform mazeStartPoint;
+    public Transform mazeEntrance;
 
     private void Start()
     {
@@ -31,7 +32,7 @@ public class MazeBuilder : MonoBehaviour
                 int row = int.Parse(parts[1].Trim());
                 int col = int.Parse(parts[2].Trim().Replace(":", ""));
 
-                Vector3 basePos = mazeStartPoint.position + new Vector3(col * 4, floor * 5, row * 4);
+                Vector3 basePos = mazeEntrance.position + new Vector3(col * 4, floor * 5, row * 4);
                 Instantiate(floorPrefab, basePos, Quaternion.identity);
 
                 // Read next few lines for cell details
